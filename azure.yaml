@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://aka.ms/azure.yaml.json
+name: tortle-bot
+infra:
+  provider: bicep
+  path: infra
+services:
+  bot:
+    project: .
+    language: docker
+    host: containerapp
+    docker:
+      path: Dockerfile
+      context: .
+      remoteBuild: true
