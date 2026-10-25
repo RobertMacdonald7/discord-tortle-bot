@@ -6,7 +6,9 @@ import {
   User,
 } from "discord.js";
 
-export const name = "random_roles";
+import { commandName } from "../config";
+
+export const name = commandName("random_roles");
 
 export const data = new SlashCommandBuilder()
   .setName(name)

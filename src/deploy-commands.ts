@@ -12,7 +12,7 @@ type DeployCommandsProps = {
 
 export async function deployCommands({ guildId }: DeployCommandsProps) {
   try {
-    console.log("Deploying commands to guild:", guildId);
+    console.log(`Deploying commands: '${commandsData.map(({ name }) => name).join(", ")}' to guild: '${guildId}'`);
 
     await rest.put(Routes.applicationGuildCommands(config.APP_ID, guildId), {
       body: commandsData,

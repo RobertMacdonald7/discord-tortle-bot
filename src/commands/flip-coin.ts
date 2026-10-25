@@ -1,6 +1,8 @@
 import { CommandInteraction, InteractionContextType, SlashCommandBuilder } from "discord.js";
 
-export const name = "flip_coin";
+import { commandName } from "../config";
+
+export const name = commandName("flip_coin");
 
 export const data = new SlashCommandBuilder()
   .setName(name)

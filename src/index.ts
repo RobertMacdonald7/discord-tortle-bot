@@ -12,6 +12,7 @@ const seenGuilds = new Set();
 
 client.once("clientReady", () => {
   console.log(`Discord bot is ready as ${client.user?.tag}`);
+  console.log(`Environment: ${config.ENVIRONMENT}`);
 });
 
 client.on("guildCreate", async (guild) => {
