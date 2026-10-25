@@ -5,3 +5,9 @@ export const commands = {
   [randomRoles.name]: randomRoles,
   [flipCoin.name]: flipCoin,
 };
+
+export function getCommandDisplayNames() {
+  return Object.keys(commands)
+    .map((name) => `'${name}'`)
+    .join(", ");
+}

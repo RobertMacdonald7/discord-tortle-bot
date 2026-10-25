@@ -1,6 +1,6 @@
 import { REST, Routes } from "discord.js";
 
-import { commands } from "./commands";
+import { commands, getCommandDisplayNames } from "./commands";
 import { config } from "./config";
 
 const commandsData = Object.values(commands).map((command) => command.data);
@@ -12,7 +12,7 @@ type DeployCommandsProps = {
 
 export async function deployCommands({ guildId }: DeployCommandsProps) {
   try {
-    console.log(`Deploying commands: '${commandsData.map(({ name }) => name).join(", ")}' to guild: '${guildId}'`);
+    console.log(`Deploying commands: ${getCommandDisplayNames()} to guild ${guildId}`);
 
     await rest.put(Routes.applicationGuildCommands(config.APP_ID, guildId), {
       body: commandsData,
