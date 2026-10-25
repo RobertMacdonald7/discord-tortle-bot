@@ -1,19 +1,21 @@
-import { InteractionContextType, SlashCommandBuilder, GuildMember, Interaction, ChatInputCommandInteraction, User } from "discord.js";
+import {
+  InteractionContextType,
+  SlashCommandBuilder,
+  Interaction,
+  ChatInputCommandInteraction,
+  User,
+} from "discord.js";
 
 export const name = "random_roles";
 
 export const data = new SlashCommandBuilder()
   .setName(name)
   .setDescription("Assigns random raid roles to members of 'Raid Group'")
-  .addUserOption(option =>
-    option.setName('exclude_user_1')
-      .setDescription('Select a user to exclude from role assignment')
-      .setRequired(false)
+  .addUserOption((option) =>
+    option.setName("exclude_user_1").setDescription("Select a user to exclude from role assignment").setRequired(false),
   )
-  .addUserOption(option =>
-    option.setName('exclude_user_2')
-      .setDescription('Select a user to exclude from role assignment')
-      .setRequired(false)
+  .addUserOption((option) =>
+    option.setName("exclude_user_2").setDescription("Select a user to exclude from role assignment").setRequired(false),
   )
   .setContexts(InteractionContextType.Guild);
 
@@ -96,8 +98,8 @@ function assignRandomRoles(users: Set<User>): string {
 
 function getExcludedUsers(interaction: ChatInputCommandInteraction): Set<User> {
   const excludedUsers: Set<User> = new Set();
-  const excludeUser1 = interaction.options.getUser('exclude_user_1');
-  const excludeUser2 = interaction.options.getUser('exclude_user_2');
+  const excludeUser1 = interaction.options.getUser("exclude_user_1");
+  const excludeUser2 = interaction.options.getUser("exclude_user_2");
   if (excludeUser1) excludedUsers.add(excludeUser1);
   if (excludeUser2) excludedUsers.add(excludeUser2);
 
