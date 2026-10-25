@@ -1,7 +1,8 @@
-import { config } from "./config.js";
 import { Client, GatewayIntentBits } from "discord.js";
-import { commands } from "./commands/index.js";
-import { deployCommands } from "./deploy-commands.js";
+
+import { commands } from "./commands";
+import { config } from "./config";
+import { deployCommands } from "./deploy-commands";
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
@@ -11,6 +12,7 @@ const seenGuilds = new Set();
 
 client.once("clientReady", () => {
   console.log(`Discord bot is ready as ${client.user?.tag}`);
+  console.log(`Environment: ${config.ENVIRONMENT}`);
 });
 
 client.on("guildCreate", async (guild) => {

@@ -59,6 +59,10 @@ resource bot 'Microsoft.App/containerApps@2024-03-01' = {
               name: 'DISCORD_TOKEN'
               secretRef: 'discord-token'
             }
+            {
+              name: 'NODE_ENV'
+              value: 'production'
+            }
           ]
         }
       ]
